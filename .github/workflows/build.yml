@@ -15,3 +15,7 @@ jobs:
       run: go install golang.org/x/mobile/cmd/gomobile@latest
     - name: test
       run: gomobile init
+    - name: build
+      run: sh ./fetch-web.sh
+    - name: build real
+      run: gomobile bind -target ios -bundleid {test.alist.ios} -o {alist-expo仓库目录}/ios/alist/Alistlib.xcframework -ldflags "-s -w" github.com/alist-org/alist/v3/alistlib
