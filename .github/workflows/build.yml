@@ -7,6 +7,8 @@ jobs:
     runs-on: macos-13
     
     steps:
+    - name: Checkout
+      uses: actions/checkout@v4
     - name: Setup Go environment
       uses: actions/setup-go@v5.1.0
       with:
@@ -18,4 +20,4 @@ jobs:
     - name: build
       run: sh ./fetch-web.sh
     - name: build real
-      run: gomobile bind -target ios -bundleid {test.alist.ios} -o {alist-expo仓库目录}/ios/alist/Alistlib.xcframework -ldflags "-s -w" github.com/alist-org/alist/v3/alistlib
+      run: gomobile bind -target ios -bundleid {test.alist.ios} -o /ios/alist/Alistlib.xcframework -ldflags "-s -w" github.com/alist-org/alist/v3/alistlib
